@@ -1,0 +1,86 @@
+<!doctype html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="fragments/header :: head"></head>
+
+<body class="bg-light">
+
+<div th:replace="fragments/header :: header"></div>
+
+<div class="d-flex">
+    <div th:replace="fragments/sidebar :: sidebar"></div>
+
+    <div class="content p-4">
+        <div class="card mb-4">
+            <div class="card-header bg-white font-weight-bold">
+                Editing webcontent's data
+            </div>
+            <div class="card-body">
+                <h1>Edit webcontent</h1>
+                <form method="post" th:action="@{/webcontent/edit}" th:object="${webcontent}">
+                    <input th:type="hidden" th:field="*{id}">
+                    <div style="display: none;" class="form-group">
+                        <label for="ico">Ico</label>
+                        <select size="1" class="form-control" id="ico" name="ico" th:field="*{ico}" required>
+                            <option selected value="youtube">YOUTUBE</option>
+                            <option value="instagram">INSTAGRAM</option>
+                            <option value="snapchat">SNAPCHAT</option>
+                            <option value="facebook">FACEBOOK</option>
+                            <option value="twitter">TWITTER</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="platform">Platform</label>
+                        <select size="1" class="form-control" id="platform" name="platform" th:field="*{platform}" required>
+                            <option selected value="Youtube">YOUTUBE</option>
+                            <option value="Instagram">INSTAGRAM</option>
+                            <option value="Snapchat">SNAPCHAT</option>
+                            <option value="Facebook">FACEBOOK</option>
+                            <option value="Twitter">TWITTER</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="title">Title</label>
+                        <input class="form-control" name="title" type="text" id="title" th:field="*{title}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="amount">Amount</label>
+                        <input class="form-control" name="amount" type="number" id="amount" th:field="*{amount}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="link">Link</label>
+                        <input class="form-control" name="link" type="text" id="link" th:field="*{link}" required>
+                    </div>
+                    <button class="btn btn-primary" onclick="setIcoOption()" type="submit">Save</button>
+                    <a class="btn btn-primary" th:href="@{/webcontent/}">Cancel</a>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    function setIcoOption() {
+        var platform = document.getElementById("platform");
+
+        if (platform.value === "Youtube") {
+            document.getElementById("ico").selectedIndex = "0";
+        } else if (platform.value === "Instagram") {
+            document.getElementById("ico").selectedIndex = "1";
+        } else if (platform.value === "Snapchat") {
+            document.getElementById("ico").selectedIndex = "2";
+        } else if (platform.value === "Facebook") {
+            document.getElementById("ico").selectedIndex = "3";
+        } else if (platform.value === "Twitter") {
+            document.getElementById("ico").selectedIndex = "4";
+        }
+    }
+</script>
+
+<div th:replace="fragments/footer :: scripts"></div>
+
+</body>
+</html>

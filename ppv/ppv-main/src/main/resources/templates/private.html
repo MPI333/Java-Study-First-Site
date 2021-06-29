@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="fragments/header :: head"></head>
+
+<body>
+
+<div th:replace="fragments/header :: header"></div>
+<div th:replace="fragments/navigation :: navbar"></div>
+
+<div id="body">
+    <td th:each="u : ${users}" th:if="${#authentication.getName() == u.username}">
+    <div style="text-align: center;">
+        <div style="display: inline-block; float: left;">
+            <img th:src="@{/images/ppv_blackline.png}" alt="PRIVATE PAGE">
+        </div>
+        <div style="display: inline-block;">
+            <h1><b>PRIVATE PAGE</b></h1>
+        </div>
+        <div style="display: inline-block; float: right;">
+            <img th:src="@{/images/ppv_blackline.png}" alt="PRIVATE PAGE">
+        </div>
+    </div>
+    <br>
+    <div class="ppv-panel ppv-card-4 ppv-center" style="padding: 12px; margin: auto; width: 60%;">
+        <p style="font-size: 18px;"><b>PROFILE DATA</b></p>
+        <div style="padding-top: 5px; padding-bottom: 10px; float: left;">
+            <img th:src="@{/images/ppv_avatar.png}" alt="Default Profile Avatar">
+        </div>
+        <div style="padding-top: 18px; display: inline-block; float: left; text-align: left; font-size: 16px;">
+            <p><b>USERNAME:</b></p>
+            <p><b>E-MAIL:</b></p>
+            <p><b>STATUS:</b></p>
+            <p><b>BALANCE:</b></p>
+        </div>
+        <div style="padding-top: 18px; padding-left: 31px; display: inline-block; float: left; text-align: left; font-size: 16px;">
+            <p th:text="${u.username}"><i>Username</i></p>
+            <p th:text="${u.email}"><i>E-mail</i></p>
+            <p style="color: green;"><i>ACTIVE</i></p>
+            <p th:text="${u.balance} + ' $'" ><i>Balance</i></p>
+        </div>
+    </div>
+    <br>
+    <div class="ppv-center">
+        <button onclick="showBalance()" class="ppv-btn ppv-ripple ppv-round ppv-black" style="width: 50%;"><b><h5>&nbsp;WITHDRAWAL&nbsp;&nbsp;PANEL&nbsp;</h5></b></button>
+        <br><br>
+        <div id="balance_panel" class="ppv-hide ppv-panel ppv-card-4 ppv-center" style="padding: 12px; margin: auto; width: 60%;">
+            <p style="font-size: 18px;"><b>WITHDRAWAL PANEL</b></p>
+            <div style="padding-top: 14px; padding-left: 10px; display: inline-block; float: left; text-align: left; font-size: 18px;">
+                <p><b>Current balance:</b></p>
+                <p style="padding-top: 24px;"><b>Payment method:</b></p>
+                <p style="padding-top: 32px;"><b>Account details:</b></p>
+            </div>
+            <form method="post" th:action="@{/private/withdrawal/{id}(id=${u.id})}">
+            <div style="padding-top: 14px; padding-left: 31px; display: inline-block; float: left; text-align: left;">
+                <p th:text="${u.balance} + ' $'" style="color: darkgreen; font-size: 18px;"><b>BALANCE</b></p>
+                <div style="padding-top: 17px;">
+                    <select class="ppv-select ppv-border" style="width: 100%;" name="payment_method" required>
+                        <option value="" disabled selected>Choose payment method...</option>
+                        <option value="payment_method1">Card</option>
+                        <option value="payment_method2">WebMoney</option>
+                        <option value="payment_method3">BTC</option>
+                    </select>
+                </div>
+                <div style="padding-top: 19px;">
+                    <input class="ppv-input ppv-border ppv-animate-input" type="text" placeholder="Type your account data..." style="width: 60%;" required>
+                </div>
+            </div>
+                <div style="padding-top: 170px;">
+                    <p style="font-size: 14px; color: darkred;">
+                        <input class="ppv-check" type="checkbox" required>
+                        <label><b>&nbsp;I ACCEPT THE TERMS OF THE AGREEMENT</b></label>
+                    </p>
+                </div>
+                <div style="padding-top: 18px; padding-bottom: 12px;">
+                    <p><button type="submit" style="width: 50%;" class="ppv-button ppv-black ppv-round">SEND&nbsp;&nbsp;REQUEST</button></p>
+                </div>
+            </form>
+        </div>
+    </div>
+    </td>
+    <br><br>
+</div>
+
+<script>
+    function showBalance() {
+        var x = document.getElementById("balance_panel");
+        if (x.className.indexOf("ppv-show") === -1) {
+            x.className += " ppv-show";
+        } else {
+            x.className = x.className.replace(" ppv-show", "");
+        }
+    }
+</script>
+
+<div th:replace="fragments/footer :: footer"></div>
+
+</body>
+
+</html>

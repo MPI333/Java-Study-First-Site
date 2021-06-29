@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="fragments/header :: head"></head>
+
+<body>
+
+<div th:replace="fragments/header :: header"></div>
+<div th:replace="fragments/navigation :: navbar"></div>
+
+<div id="body">
+    <div style="text-align: center;">
+     <div style="display: inline-block; float: left;">
+        <img th:src="@{/images/ppv_blackline.png}" alt="HOME PAGE">
+     </div>
+     <div style="display: inline-block;">
+        <h1><b>PAY PER VIEW</b></h1>
+     </div>
+     <div style="display: inline-block; float: right;">
+        <img th:src="@{/images/ppv_blackline.png}" alt="HOME PAGE">
+     </div>
+    </div>
+    <div style="text-align: justify;">
+     <b><h4>
+        Dear users, welcome to our website PPV.COM! If you want to earn money without investing, you've come to the right place.
+         On our portal you will be able to <u>earn a decent amount of money in the shortest possible time</u>.
+     </h4></b>
+    </div>
+    <div style="text-align: center;">
+        <b><h4>
+            We work honestly and our service provides all possibilities for comfortable and convenient work.
+        </h4></b>
+    </div>
+    <div style="text-align: center;">
+        <img th:src="@{/images/ppv_about.png}" alt="ABOUT">
+    </div>
+    <div style="margin: auto; width: 24%;">
+        <a th:href="@{/webcontent}" style="font-size: 24px; padding: 20px;" class="ppv-button ppv-orange ppv-round"><b>&nbsp;START NOW&nbsp;</b></a>
+    </div>
+    <br><br><br>
+</div>
+
+<div th:replace="fragments/footer :: footer"></div>
+
+</body>
+
+</html>

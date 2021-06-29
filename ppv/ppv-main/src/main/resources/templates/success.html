@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="fragments/header :: head"></head>
+
+<body>
+
+<div th:replace="fragments/header :: header"></div>
+<div th:replace="fragments/navigation :: navbar"></div>
+
+<div id="body">
+    <br><br><br>
+    <div class="ppv-center">
+        <img th:src="@{/images/ppv_success.png}" alt="SUCCESS!!!">
+        <p style="padding-top: 20px; font-size: 40px; color: #419645;">SUCCESS!</p>
+        <p style="padding-top: 10px; font-size: 18px; color: #419645;">Congratulations, the operation was successfully performed without any problems.</p>
+        <br><br>
+        <a style="font-size: 30px;" class="ppv-button ppv-green ppv-round" th:href="@{/home}">BACK TO HOME</a>
+    </div>
+    <br><br><br><br><br>
+</div>
+
+<div th:replace="fragments/footer :: footer"></div>
+
+</body>
+
+</html>

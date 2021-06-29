@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="fragments/header :: head"></head>
+
+<body>
+
+<div th:replace="fragments/header :: header"></div>
+<div th:replace="fragments/navigation :: navbar"></div>
+
+<div id="body">
+    <div class="content p-4" style="padding-top: 5px;" th:each="u : ${users}" th:if="${#authentication.getName() == u.username}">
+        <div class="card mb-4">
+            <div class="card-body">
+                <table id="webcontenttable" class="table table-hover dataTable no-footer dtr-inline ppv-hoverable" cellspacing="0" width="100%" role="grid"
+                       aria-describedby="example_info" style="width: 100%; text-align: center; padding-top: 10px;">
+                    <thead>
+                    <tr role="row" class="ppv-light-grey" style="font-size: 16px;">
+                        <th class="sorting_disabled" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 100px;" aria-label="Ico">Icon</th>
+                        <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 270px;" aria-label="Platform: activate to sort column ascending">Platform</th>
+                        <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 500px;" aria-label="Title: activate to sort column ascending">Title</th>
+                        <th class="sorting_disabled" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 150px;" aria-label="Link">Link</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="wc : ${webcontent}" th:if="${(u.hasWebcontentWithId(wc.id) == false) && (wc.amount > 0)}">
+                        <td>
+                            <img th:src="@{/images/media_icons/{ico}.png(ico=${wc.ico})}"/>
+                        </td>
+                        <td th:text="${wc.platform}"/>
+                        <td th:text="${wc.title}"/>
+                        <td>
+                            <form method="post" th:action="@{/webcontent/{content}/{viewer}(content=${wc.id}, viewer=${u.id})}">
+                                <a target="_blank" th:href="${wc.link}" class="ppv-hide ppv-btn ppv-hover-black ppv-orange ppv-round" style="font-size: 14px;">&nbsp;VIEW&nbsp;</a>
+                                <button class="ppv-btn ppv-hover-black ppv-orange ppv-round" style="font-size: 14px;">&nbsp;VIEW&nbsp;</button>
+                            </form>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:replace="fragments/footer :: footer"></div>
+
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+<!doctype html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="fragments/header :: head"></head>
+
+<body class="bg-light">
+
+<div th:replace="fragments/header :: header"></div>
+
+<div class="d-flex">
+    <div th:replace="fragments/sidebar :: sidebar"></div>
+
+    <div class="content p-4">
+        <div class="card mb-4">
+            <div class="card-header bg-white font-weight-bold">
+                Editing role's data
+            </div>
+            <div class="card-body">
+                <h1>Edit role</h1>
+                <form method="post" th:action="@{/roles/edit}" th:object="${role}">
+                    <input th:field="*{id}" type="hidden" class="form-control">
+                    <div class="form-group">
+                        <label for="name">Role</label>
+                        <input class="form-control" name="name" type="text" id="name" th:field="*{name}" placeholder="Role" required>
+                    </div>
+                    <button class="btn btn-primary" type="submit">Save</button>
+                    <a class="btn btn-primary" th:href="@{/roles/}">Cancel</a>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div th:replace="fragments/footer :: scripts"></div>
+
+</body>
+</html>

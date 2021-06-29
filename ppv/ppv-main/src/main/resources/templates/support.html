@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="fragments/header :: head"></head>
+
+<body>
+
+<div th:replace="fragments/header :: header"></div>
+<div th:replace="fragments/navigation :: navbar"></div>
+
+<div id="body">
+    <div style="text-align: center;">
+        <div style="display: inline-block; float: left;">
+            <img th:src="@{/images/ppv_blackline.png}" alt="SUPPORT PAGE">
+        </div>
+        <div style="display: inline-block;">
+            <h1><b>SUPPORT PAGE</b></h1>
+        </div>
+        <div style="display: inline-block; float: right;">
+            <img th:src="@{/images/ppv_blackline.png}" alt="SUPPORT PAGE">
+        </div>
+    </div>
+    <br>
+    <div class="ppv-panel ppv-card-4 ppv-center" style="padding: 12px; margin: auto; width: 50%;">
+        <form method="post" th:action="@{/success}">
+            <p>
+                <label style="font-size: 18px;"><b>SPECIFY YOUR STATUS ON THE PORTAL</b></label>
+                <select class="ppv-select ppv-border" style="width: 97%;" name="support_theme" required>
+                    <option value="" disabled selected>Choose your status...</option>
+                    <option value="support_theme1">USER</option>
+                    <option value="support_theme2">ADVERTISER</option>
+                </select>
+            </p>
+            <p style="padding-top: 7px;">
+                <label style="font-size: 18px;"><b>YOUR MESSAGE</b></label>
+                <textarea style="resize: none;" rows="10" cols="47" placeholder="Type your message here..." maxlength="450" required></textarea>
+            </p>
+            <p style="padding-top: 14px;"><button type="submit" style="width: 50%;" class="ppv-button ppv-black ppv-round">&nbsp;SEND&nbsp;</button></p>
+        </form>
+        <p style="padding-top: 10px; padding-bottom: 7px; font-size: 14px; color: darkred;"><b>Please choose the correct account status,
+            otherwise you will not receive a response!</b></p>
+    </div>
+    <br><br>
+</div>
+
+<div th:replace="fragments/footer :: footer"></div>
+
+</body>
+
+</html>

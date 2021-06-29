@@ -1,0 +1,61 @@
+<!doctype html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="fragments/header :: head"></head>
+
+<body class="bg-light">
+
+<div th:replace="fragments/header :: header"></div>
+
+<div class="d-flex">
+    <div th:replace="fragments/sidebar :: sidebar"></div>
+
+    <div class="content p-4">
+        <div id="on-same-line">
+            <h2 class="mb-4">Webcontent <a class="btn btn-dark" th:href="@{/webcontent/add}">ADD WEBCONTENT</a></h2>
+        </div>
+        <div class="card mb-4">
+            <div class="card-body">
+                <table id="example" class="table table-hover dataTable no-footer dtr-inline" cellspacing="0" width="100%" role="grid" aria-describedby="example_info" style="width: 100%; text-align: center;">
+                    <thead>
+                    <tr role="row">
+                        <th class="sorting_asc" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 101.5px;" aria-sort="ascending" aria-label="ID: activate to sort column ascending">ID</th>
+                        <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 392.5px;" aria-label="Ico: activate to sort column ascending">Ico</th>
+                        <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 392.5px;" aria-label="Platform: activate to sort column ascending">Platform</th>
+                        <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 292.5px;" aria-label="Title: activate to sort column ascending">Title</th>
+                        <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 292.5px;" aria-label="Amount: activate to sort column ascending">Amount</th>
+                        <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 292.5px;" aria-label="Link: activate to sort column ascending">Link</th>
+                        <th class="actions sorting_disabled" rowspan="1" colspan="1" style="width: 234px;" aria-label="Actions">Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="wc : ${webcontent}">
+                        <td th:text="${wc.id}"/>
+                        <td>
+                            <img th:src="@{/images/{ico}.png(ico=${wc.ico})}"/>
+                        </td>
+                        <td th:text="${wc.platform}"/>
+                        <td th:text="${wc.title}"/>
+                        <td th:text="${wc.amount}"/>
+                        <td>
+                            <a target="_blank" th:href="${wc.link}" class="btn" style="font-family: verdana; background-color: darkslateblue; color: aliceblue">LINK</a>
+                        </td>
+                        <td class=" actions">
+                            <a th:href="@{'/webcontent/edit/' + ${wc.id}}" class="btn btn-icon btn-pill btn-primary" data-toggle="tooltip" title="" data-original-title="Edit"><i class="fa fa-fw fa-edit"></i></a>
+                            <a th:href="@{'/webcontent/remove/' + ${wc.id}}" class="btn btn-icon btn-pill btn-danger" data-toggle="tooltip" title="" data-original-title="Delete"><i class="fa fa-fw fa-trash"></i></a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div th:replace="fragments/footer :: scripts"></div>
+
+</body>
+</html>

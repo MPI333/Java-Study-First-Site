@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="fragments/header :: head"></head>
+
+<body>
+
+<div th:replace="fragments/header :: header"></div>
+<div th:replace="fragments/navigation :: navbar"></div>
+
+<div id="body">
+    <div style="text-align: center;">
+        <div style="display: inline-block; float: left;">
+            <img th:src="@{/images/ppv_blackline.png}" alt="HOME PAGE">
+        </div>
+        <div style="display: inline-block;">
+            <h1><b>F. A. Q.</b></h1>
+        </div>
+        <div style="display: inline-block; float: right;">
+            <img th:src="@{/images/ppv_blackline.png}" alt="HOME PAGE">
+        </div>
+    </div>
+
+    <br>
+
+    <div>
+        <button onclick="faqQuestionOne()" class="ppv-btn ppv-black" style="width: 100%;"><b><h5>&#9679;&nbsp;What is special about PPV.COM?</h5></b></button>
+        <div id="question_one" class="ppv-hide ppv-panel ppv-card-4 ppv-center" style="width:100%">
+            <p style="margin: 14px; font-size: 20px; text-align: justify;"><i>The peculiarity of our portal is that you can earn money pretty quickly by watching different content.</i></p>
+        </div>
+    </div><br>
+    <div>
+        <button onclick="faqQuestionTwo()" class="ppv-btn ppv-black" style="width: 100%;"><b><h5>&#9679;&nbsp;How does it work?</h5></b></button>
+        <div id="question_two" class="ppv-hide ppv-panel ppv-card-4 ppv-center" style="width:100%">
+            <p style="margin: 14px; font-size: 20px; text-align: justify;"><i>First you need to register on our portal, then you need to log in with your username and password.
+                After that you need to go to the tab "<u>VIEW</u>", where there will be a list of content, viewing which you will receive money.</i></p>
+        </div>
+    </div><br>
+    <div>
+        <button onclick="faqQuestionThree()" class="ppv-btn ppv-black" style="width: 100%;"><b><h5>&#9679;&nbsp;How do the payouts work?</h5></b></button>
+        <div id="question_three" class="ppv-hide ppv-panel ppv-card-4 ppv-center" style="width:100%">
+            <p style="margin: 14px; font-size: 20px; text-align: justify;"><i>In order to take out the money you earned,
+                you need to go to your profile, where at the bottom will be the withdrawal panel.</i></p>
+        </div>
+    </div><br>
+    <div>
+        <button onclick="faqQuestionFour()" class="ppv-btn ppv-black" style="width: 100%;"><b><h5>&#9679;&nbsp;Is it necessary to register on the portal?</h5></b></button>
+        <div id="question_four" class="ppv-hide ppv-panel ppv-card-4 ppv-center" style="width:100%">
+            <p style="margin: 14px; font-size: 20px; text-align: justify;"><i>Yes, registration is required for users who want to fully use our service.</i></p>
+        </div>
+    </div><br>
+    <div>
+        <button onclick="faqQuestionFive()" class="ppv-btn ppv-black" style="width: 100%;"><b><h5>&#9679;&nbsp;Do I need to link my accounts for further payments?</h5></b></button>
+        <div id="question_five" class="ppv-hide ppv-panel ppv-card-4 ppv-center" style="width:100%">
+            <p style="margin: 14px; font-size: 20px; text-align: justify;"><i>You don't need to link your accounts.
+                When you withdraw funds, you only need to specify the details where the money you earned will be transferred.</i></p>
+        </div>
+    </div><br>
+    <div>
+        <button onclick="faqQuestionSix()" class="ppv-btn ppv-black" style="width: 100%;"><b><h5>&#9679;&nbsp;What should I do if I want to get views on my content?</h5></b></button>
+        <div id="question_six" class="ppv-hide ppv-panel ppv-card-4 ppv-center" style="width:100%">
+            <p style="margin: 14px; font-size: 20px; text-align: justify;"><i>If you own any content and want views on it,
+                you need to contact us by going to the "<u>SUPPORT</u>" tab.</i></p>
+        </div>
+    </div><br>
+    <div>
+        <button onclick="faqQuestionSeven()" class="ppv-btn ppv-black" style="width: 100%;"><b><h5>&#9679;&nbsp;I have more questions, where should I ask them?</h5></b></button>
+        <div id="question_seven" class="ppv-hide ppv-panel ppv-card-4 ppv-center" style="width:100%">
+            <p style="margin: 14px; font-size: 20px; text-align: justify;"><i>For any additional questions, please,
+                contact our support team by clicking on the "SUPPORT" tab.</i></p>
+        </div>
+    </div><br>
+</div>
+
+<script>
+    function faqQuestionOne() {
+        var x = document.getElementById("question_one");
+        if (x.className.indexOf("ppv-show") === -1) {
+            x.className += " ppv-show";
+        } else {
+            x.className = x.className.replace(" ppv-show", "");
+        }
+    }
+    function faqQuestionTwo() {
+        var x = document.getElementById("question_two");
+        if (x.className.indexOf("ppv-show") === -1) {
+            x.className += " ppv-show";
+        } else {
+            x.className = x.className.replace(" ppv-show", "");
+        }
+    }
+    function faqQuestionThree() {
+        var x = document.getElementById("question_three");
+        if (x.className.indexOf("ppv-show") === -1) {
+            x.className += " ppv-show";
+        } else {
+            x.className = x.className.replace(" ppv-show", "");
+        }
+    }
+    function faqQuestionFour() {
+        var x = document.getElementById("question_four");
+        if (x.className.indexOf("ppv-show") === -1) {
+            x.className += " ppv-show";
+        } else {
+            x.className = x.className.replace(" ppv-show", "");
+        }
+    }
+    function faqQuestionFive() {
+        var x = document.getElementById("question_five");
+        if (x.className.indexOf("ppv-show") === -1) {
+            x.className += " ppv-show";
+        } else {
+            x.className = x.className.replace(" ppv-show", "");
+        }
+    }
+    function faqQuestionSix() {
+        var x = document.getElementById("question_six");
+        if (x.className.indexOf("ppv-show") === -1) {
+            x.className += " ppv-show";
+        } else {
+            x.className = x.className.replace(" ppv-show", "");
+        }
+    }
+    function faqQuestionSeven() {
+        var x = document.getElementById("question_seven");
+        if (x.className.indexOf("ppv-show") === -1) {
+            x.className += " ppv-show";
+        } else {
+            x.className = x.className.replace(" ppv-show", "");
+        }
+    }
+</script>
+
+<div th:replace="fragments/footer :: footer"></div>
+
+</body>
+
+</html>

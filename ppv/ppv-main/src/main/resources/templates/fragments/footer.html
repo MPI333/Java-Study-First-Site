@@ -1,0 +1,33 @@
+<!doctype html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<body>
+
+<div th:fragment="footer" id="footer">
+    <script th:src="@{/webjars/jquery/3.3.1/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/4.4.1/js/bootstrap.bundle.min.js}"></script>
+    <script th:src="@{/js/bootadmin.min.js}"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
+    <script src="https://bootadmin.net/js/datatables.min.js"></script>
+
+    <script>
+        $(document).ready( function () {
+            $('#webcontenttable').DataTable();
+        } );
+    </script>
+
+    <div style="word-spacing: 12px; color: #f8981c; text-align: center;">
+        <span>
+            <h4>WANT MORE VIEWERS? <a th:href="@{/support}"> CONTACT US NOW</a></h4>
+        </span>
+    </div>
+    <div style="text-align: center; color: #fafafa;">
+        <h5>&copy; 2021 &nbsp; PPV.COM &nbsp; ALL RIGHTS RESERVED</h5>
+    </div>
+</div>
+
+</body>
+
+</html>

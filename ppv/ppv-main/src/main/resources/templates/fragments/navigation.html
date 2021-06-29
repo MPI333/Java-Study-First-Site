@@ -1,0 +1,39 @@
+<!doctype html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<body>
+
+<div th:fragment="navbar" style="margin:0 auto; width: 1000px; border: 1px solid black;" class="ppv-bar ppv-light-grey">
+
+    <a th:if="${activePage == 'Home'}" th:href="@{/home}" class="ppv-bar-item ppv-button ppv-black ppv-hover-black">&nbsp;HOME&nbsp;</a>
+    <a th:if="${activePage != 'Home'}" th:href="@{/home}" class="ppv-bar-item ppv-button ppv-hover-black">&nbsp;HOME&nbsp;</a>
+    <a th:if="${activePage == 'Webcontent'}" th:href="@{/webcontent}" style="background-color: #de7e1c" class="ppv-bar-item ppv-button ppv-black ppv-hover-black">&nbsp;VIEW&nbsp;</a>
+    <a th:if="${activePage != 'Webcontent'}" th:href="@{/webcontent}" style="background-color: #de7e1c" class="ppv-bar-item ppv-button ppv-hover-black">&nbsp;VIEW&nbsp;</a>
+    <a th:if="${activePage == 'Faq'}" th:href="@{/faq}" class="ppv-bar-item ppv-button ppv-black ppv-hover-black">&nbsp;F.A.Q.&nbsp;</a>
+    <a th:if="${activePage != 'Faq'}" th:href="@{/faq}" class="ppv-bar-item ppv-button ppv-hover-black">&nbsp;F.A.Q.&nbsp;</a>
+    <a th:if="${activePage == 'Support'}" th:href="@{/support}" class="ppv-bar-item ppv-button ppv-black ppv-hover-black">&nbsp;SUPPORT&nbsp;</a>
+    <a th:if="${activePage != 'Support'}" th:href="@{/support}" class="ppv-bar-item ppv-button ppv-hover-black">&nbsp;SUPPORT&nbsp;</a>
+
+    <div th:if="${#authentication.getName() == 'anonymousUser'}"
+         style="display: inline-block; float: right; padding-right: 40px; padding-top: 6px; font-size: 18px;">
+        <a th:href="@{/login}">LOGIN</a>
+        <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+        <a th:href="@{/registration}">REGISTRATION</a>
+    </div>
+
+    <div th:if="${#authentication.getName() != 'anonymousUser'}"
+         style="display: inline-block; float: right; padding-right: 40px; padding-top: 6px; font-size: 18px;">
+        <td th:each="u : ${users}" th:if="${#authentication.getName() == u.username}">
+            <a th:href="@{/private}" th:text="${u.username}">Username</a>
+            <span>&nbsp;&nbsp;|&nbsp;&nbsp;Balance:</span>
+            <span style="color: darkgreen;" th:text="${u.balance} + ' $'">balance</span>
+        </td>
+    </div>
+
+</div>
+
+</body>
+
+</html>

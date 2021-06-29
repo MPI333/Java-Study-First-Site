@@ -1,0 +1,22 @@
+<!doctype html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<th:block th:fragment="scripts">
+
+ <script th:src="@{/webjars/jquery/3.3.1/jquery.min.js}"></script>
+ <script th:src="@{/webjars/bootstrap/4.4.1/js/bootstrap.bundle.min.js}"></script>
+ <script th:src="@{/js/bootadmin.min.js}"></script>
+ <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
+ <script src="https://bootadmin.net/js/datatables.min.js"></script>
+
+ <script>
+    $(document).ready( function () {
+        $('#example').DataTable();
+    } );
+ </script>
+
+</th:block>
+
+</html>

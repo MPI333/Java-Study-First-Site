@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="fragments/header :: head"></head>
+
+<body>
+
+<div th:replace="fragments/header :: header"></div>
+<div th:replace="fragments/navigation :: navbar"></div>
+
+<div id="body">
+    <div style="text-align: center;">
+        <div style="display: inline-block; float: left;">
+            <img th:src="@{/images/ppv_blackline.png}" alt="LOGIN PAGE">
+        </div>
+        <div style="display: inline-block;">
+            <h1><b>LOGIN PAGE</b></h1>
+        </div>
+        <div style="display: inline-block; float: right;">
+            <img th:src="@{/images/ppv_blackline.png}" alt="LOGIN PAGE">
+        </div>
+    </div>
+    <br>
+    <div class="ppv-panel ppv-card-4 ppv-center" style="padding: 12px; margin: auto; width: 50%;">
+        <form th:action="@{/authenticateTheUser}" method="post">
+            <p>
+                <label style="font-size: 18px;"><b>USERNAME</b></label>
+                <input class="ppv-input ppv-border ppv-animate-input" name="username" type="text" placeholder="Username" style="width: 40%;" required>
+            </p>
+            <p style="padding-top: 7px;">
+                <label style="font-size: 18px;"><b>PASSWORD</b></label>
+                <input class="ppv-input ppv-border ppv-animate-input" name="password" type="password" placeholder="Password" style="-webkit-text-security: disc; width: 40%;" required>
+            </p>
+            <p style="padding-top: 14px;"><button type="submit" style="width: 50%;" class="ppv-button ppv-black ppv-round">&nbsp;LOGIN&nbsp;</button></p>
+        </form>
+        <p style="padding-top: 10px; padding-bottom: 7px; font-size: 14px;">
+            <a th:href="@{/support}">FORGOT__PASSWORD</a>
+            &nbsp;&nbsp;|&nbsp;&nbsp;
+            <a th:href="@{/registration}">REGISTER_ACCOUNT</a>
+        </p>
+    </div>
+    <br><br>
+</div>
+
+<div th:replace="fragments/footer :: footer"></div>
+
+</body>
+
+</html>
